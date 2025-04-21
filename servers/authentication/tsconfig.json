@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",          // Use the latest ECMAScript version
+    "module": "ESNext",          // Use modern ES Modules
+    "moduleResolution": "node",  // Resolve modules in Node.js style
+    "outDir": "./dist",          // Output directory for compiled files
+    "rootDir": "../",          // Root directory for source files
+    "strict": true,              // Enable strict type checking
+    "esModuleInterop": true,     // Allow default imports from CommonJS modules
+    "skipLibCheck": true,        // Skip type checking of declaration files
+    "baseUrl": ".",              // Base directory for resolving paths
+    "paths": {
+      "@server-lib/*": ["../lib/*"], // Alias for shared server libraries
+      "@lib/*": ["../../lib/*"]     // Alias for libraries shared across everything
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
+

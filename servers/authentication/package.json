@@ -1,19 +1,26 @@
 {
+  "name": "authentication",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.js",
   "dependencies": {
     "@hapi/hapi": "^21.4.0",
     "dotenv": "^16.5.0",
-    "joi": "^17.13.3"
+    "joi": "^17.13.3",
+    "@socialem/server-lib": "file:../lib"
   },
   "devDependencies": {
     "@types/hapi__hapi": "^20.0.13",
     "@types/node": "^22.14.1",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.15",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   },
-  "name": "authentication",
-  "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "build": "npm run clean && tsc -b",
+    "start": "npm run build && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

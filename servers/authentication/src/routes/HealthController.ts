@@ -1,10 +1,10 @@
-import { BaseController } from '@server-lib/BaseController';
+import { BaseController } from '@socialem/server-lib';
 import { Server, Request, ResponseToolkit } from '@hapi/hapi';
 
 export class HealthController extends BaseController {
-    constructor(server: Server, path: string) {
+    constructor(server: Server) {
         // Call the BaseController constructor
-        super(server, path);
+        super(server, "/health");
     }
 
     // Override the GET method to define the /health route logic

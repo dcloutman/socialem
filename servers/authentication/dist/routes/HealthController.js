@@ -1,17 +1,15 @@
-import { BaseController } from '@server-lib/BaseController';
+import { BaseController } from '@socialem/server-lib';
 export class HealthController extends BaseController {
-    constructor(server, path) {
+    constructor(server) {
         // Call the BaseController constructor
-        super(server, path);
+        super(server, "/health");
     }
     // Override the GET method to define the /health route logic
-    get() {
-        return (request, h) => {
-            return h.response({
-                status: 'ok',
-                service: 'authentication',
-                timestamp: new Date().toISOString(),
-            }).code(200);
-        };
+    get(request, responseToolkit) {
+        return responseToolkit.response({
+            status: 'ok',
+            service: 'authentication',
+            timestamp: new Date().toISOString(),
+        }).code(200);
     }
 }

@@ -1,7 +1,9 @@
 # Node.js dependencies
 node_modules/
 
-# Build output for specific services
+# Build output for clients
+
+# Build output for server-side services
 servers/authentication/dist/
 servers/lib/dist/
 
@@ -39,3 +41,4 @@ desktop.ini
 # Miscellaneous
 *.bak
 *.orig
+

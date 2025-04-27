@@ -43,6 +43,15 @@ The primary considerations for the server are security, scalability, and user pr
 ### Shared Libraries
 - `@server-lib`: Points to libraries shared across all server-side applications.
 
+### Coding Conventions
+
+#### Controller Naming and Autoloading
+- All controllers must extend the shared `BaseController` class, which provides default behavior for common HTTP methods and route registration.
+- The constructor of each controller must call the constructor of the `BaseController` with the appropriate arguments.
+- All controller file names must end with `Controller.ts` (e.g., `HealthController.ts`).
+- The exported class within the file must have the same name as the file and also end with `Controller` (e.g., `HealthController` in `HealthController.ts`).
+- Controllers are automatically loaded from the `routes` directory of each service. There is no need to manually register controllers in the service's entry point.
+
 ### Authorization
 Used to sign users in and out of the system.
 

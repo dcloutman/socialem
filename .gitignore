@@ -4,7 +4,7 @@ node_modules/
 # Build output for clients
 
 # Build output for server-side services
-servers/authentication/dist/
+servers/public/authentication/dist/
 servers/lib/dist/
 
 # TypeScript build info

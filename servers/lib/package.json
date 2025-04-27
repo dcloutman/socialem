@@ -1,15 +1,26 @@
 {
-  "name": "lib",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@socialem/server-lib",
+  "type": "module",
+  "private": true,
+  "version": "0.0.4",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -b",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "test": "echo \"No tests specified\" && exit 1"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@hapi/hapi": "^21.4.0"
-  }
+  "description": "Shared server library for Socialem"
 }

@@ -1,5 +1,5 @@
 import { Server, Request, ResponseToolkit, Lifecycle, RouteDefMethods } from '@hapi/hapi';
-import { HapiHTTPMethodHandler } from './types'; // Import the shared type
+import { HapiHTTPMethodHandler } from './types.js';
 
 /**
  * BaseController is a base class for defining HTTP route handlers.
@@ -13,7 +13,9 @@ export class BaseController {
     protected server: Server;
 
     /**
-     * The base path for all routes in this controller.
+     * The base path for all routes in this controller. Must start with a '/'.
+     * If the provided basePath does not start with a '/', it will be automatically corrected
+     * at runtime, but a warning will be emmited.
      */
     protected basePath: string;
 
@@ -24,7 +26,16 @@ export class BaseController {
      */
     constructor(server: Server, basePath: string) {
         this.server = server;
-        this.basePath = basePath;
+
+        // Ensure the basePath starts with a '/'
+        if (!basePath.startsWith('/')) {
+            console.warn(
+                `Warning: The basePath "${basePath}" does not start with a '/'. It has been automatically corrected to "/${basePath}".`
+            );
+            this.basePath = `/${basePath}`;
+        } else {
+            this.basePath = basePath;
+        }
 
         // Automatically register HTTP methods
         this.registerRoutes();
@@ -93,12 +104,10 @@ export class BaseController {
      * This method dynamically maps HTTP methods (GET, POST, PUT, DELETE) to their corresponding class methods.
      */
     private registerRoutes(): void {
-        // HTTP methods to register
+        // Define the HTTP methods to be registered
         const httpMethods: readonly string[] = ['GET', 'POST', 'PUT', 'DELETE'];
-
-        for (let i = 0; i < httpMethods.length; i++) {
-            const httpMethod = httpMethods[i]; // HTTP method in uppercase (e.g., 'GET', 'POST')
-            const classMethod = httpMethod.toLowerCase() as keyof this; // Corresponding class method (e.g., 'get', 'post')
+        for (const httpMethod of httpMethods) {
+            const classMethod = httpMethod.toLowerCase() as keyof this;
 
             // Check if the class method is implemented in the derived class
             if (typeof (this as any)[classMethod] === 'function') {

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2022",            // Use the recent ECMAScript version
+    "module": "node16",            // Use modern ES Modules
+    "moduleResolution": "node16",  // Support ES Modules in Node.js
+    "outDir": "./dist",            // Output directory for compiled files
+    "baseUrl": ".",                // Base directory for resolving paths
+    "rootDir": "./src",            // Root directory for source files
+    "strict": true,                // Enable strict type checking
+    "esModuleInterop": true,       // Allow default imports from CommonJS modules
+    "skipLibCheck": true,          // Skip type checking of declaration files
+    "declaration": true,           // Generate declaration files (.d.ts)
+    "declarationMap": true,        // Generate source maps for declaration files
+    "composite": true              // Required for project references
+  },
+  "include": ["src/**/*.ts"],    // Include all TypeScript files in src
+  "exclude": ["node_modules"]    // Exclude node_modules directory
+}

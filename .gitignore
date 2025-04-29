@@ -5,6 +5,8 @@ node_modules/
 
 # Build output for server-side services
 servers/public/authentication/dist/
+lib/dist/
+clients/lib/dist/
 servers/lib/dist/
 
 # TypeScript build info
